@@ -1,0 +1,80 @@
+<div class="d-flex align-items-center py-3">
+    <button type="button" placement="end" ngbTooltip="Atrás" triggers="hover" routerLink="/principal/club" class="btn btn-icon border me-2">
+		<span class="feather icon-arrow-left"></span>
+	</button>
+    <div class="breadcrumb">
+        <span class="breadcrumb-item breadcrumb-item-link" routerLink="/principal/club"> Club </span>
+        <span class="breadcrumb-item">{{ !nuevoRegistro() ? 'Detalles del Club' : 'Nuevo Club' }}</span>
+    </div>
+</div>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" [ngClass]=" { 'd-none' : nuevoRegistro() } " class="nav-tabs position-sticky mb-3" style="top: -1rem">
+    <li [ngbNavItem]="1">
+        <button ngbNavLink>Datos</button>
+        <ng-template ngbNavContent>
+            <div class="row">
+                <div class="col-md-9 col-lg-8 order-1 order-md-0">
+                    <div class="card p-3">
+                        <form>
+                            <h6 class="text-uppercase fw-bold mb-3 label-regular">DATOS PARA EL REGISTRO DE CLUB</h6>
+                            <div class="row gx-3">
+                                <div class="col-sm-4 mb-3">
+                                    <label for="codigo" class="form-label">Código</label>
+                                    <input type="text" class="form-control" id="codigo">
+                                </div>
+                            </div>
+                            <div class="row gx-3">
+                                <div class="col-sm-12 mb-3">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre">
+                                </div>
+                                <div class="col-sm-12 mb-3">
+                                    <label for="banco" class="form-label">Banco</label>
+                                    <ng-select class="text-uppercase w-100" [items]="listadoBancos()" bindLabel="name" bindValue="id" name="banco" [clearable]="false" [(ngModel)]="bancoSelect">
+                                    </ng-select>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <label for="tipoCuenta" class="form-label">Tipo de Cuenta</label>
+                                    <ng-select class="text-uppercase w-100" [items]="listadoCuentas()" bindLabel="name" bindValue="id" name="tipoCuenta" [clearable]="false" [(ngModel)]="cuentaSelect">
+                                    </ng-select>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <label for="moneda" class="form-label">Tipo de Moneda</label>
+                                    <ng-select class="text-uppercase w-100" [items]="listadoMonedas()" bindLabel="name" bindValue="id" name="moneda" [clearable]="false" [(ngModel)]="monedaSelect">
+                                    </ng-select>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <label for="numeroCuenta" class="form-label">Número de Cuenta</label>
+                                    <input type="text" class="form-control" id="numeroCuenta">
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <label for="cci" class="form-label">CCI</label>
+                                    <input type="text" class="form-control" id="cci">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end mt-4">
+                        <button routerLink="/principal/club" type="button" class="btn btn-outline-secondary me-2">
+							<span class="feather icon-x me-1"></span>
+							Cancelar
+						</button>
+                        <button (click)="abrirModal()" type="button" class="btn btn-primary">
+							<span class="feather icon-save me-1"></span>
+							Guardar
+						</button>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-4">
+                    <p class="bgd-secondary p-3 rounded">
+                        Registra un Club, para que después pueda ser utilizado en el registro de deportistas
+                    </p>
+                </div>
+            </div>
+        </ng-template>
+    </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="py-3"></div>
+
+<app-modal *ngIf="modal().open" [modal]="modal()" [aceptarModal]="aceptarModal" [cerrarModal]="cerrarModal">
+</app-modal>

@@ -1,0 +1,28 @@
+.detalle {
+	position: fixed;
+	top: $header-size;
+	right: 0;
+	width: 100%;
+	max-width: 100%;
+	height: calc(100% - $header-size);
+	background-color: $slate-50;
+	z-index: $z-index-detalle;
+	transition: all ease .4s;
+	opacity: 0;
+	transform: translateX(110%);
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	&.show {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	@media (min-width: 576px) {
+		width: 600px;
+		border-left: 1px solid $slate-200;
+		border-top-left-radius: 1rem;
+		border-bottom-left-radius: 1rem;
+		box-shadow: $box-shadow-lg;
+	}
+}

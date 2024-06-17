@@ -1,0 +1,20 @@
+.iSleep {
+
+	.popover {
+
+		.popover-body {
+			color: $slate-100;
+			padding: 0.75rem;
+			background-color: $slate-800;
+			border-radius: $border-radius-sm;
+			box-shadow: $box-shadow-lg;
+			line-height: 130%;
+			border: none;
+		}
+
+		.popover-arrow {
+			display: none;
+		}
+
+	}
+}

@@ -1,0 +1,35 @@
+<div class="header" id="header">
+    <div class="header-item">
+        <button type="button" class="btn btn-icon btn-lg" placement="end" ngbTooltip="Menu" triggers="hover" (click)="toogleSidebar()">
+			<span class="feather icon-menu text-white"></span>
+		</button>
+    </div>
+    <a class="cursor-pointer" (click)="resetear()">
+        <img src="assets/images/logo_header.png" alt="logo isleep" width="80px">
+    </a>
+    <div class="header-item d-flex justify-content-end gap-2">
+        <button (click)="toogleHelpOn()" type="button" placement="start" ngbTooltip="¿Necesitas ayuda?" triggers="hover" class="btn btn-icon btn-lg">
+			<span class="feather icon-help-circle text-white"></span>
+		</button>
+        <div ngbDropdown #myDrop="ngbDropdown">
+            <span class="header-avatar d-flex d-md-none" (click)="$event.stopPropagation(); myDrop.open()">
+				AH
+			</span>
+            <button tabindex="0" type="button" class="btn btn-profile d-none d-md-flex" (click)="$event.stopPropagation(); myDrop.open()">
+				Andrés Zumaran
+				<span class="feather icon-chevron-down ms-1"></span>
+			</button>
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-end">
+                <div class="px-3 py-2">
+                    <h6 class="label-large text-nowrap fw-bold m-0">Andrés Zumaran</h6>
+                    <small class="text-secondary">Rol Administrador</small>
+                </div>
+                <hr class="dropdown-divider">
+                <button ngbDropdownItem>
+					<span class="feather icon-log-out icon-sm me-1 text-secondary"></span>
+					Cerrar sesión
+				</button>
+            </div>
+        </div>
+    </div>
+</div>

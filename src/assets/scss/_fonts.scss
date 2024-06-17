@@ -1,0 +1,35 @@
+@font-face {
+	font-display: swap;
+	font-family: "notoSans";
+	src: url("../fonts/notoSans/NotoSans-Regular.woff2") format("woff2"),
+		url("../fonts/notoSans/NotoSans-Regular.woff") format("woff"),
+		url("../fonts/notoSans/NotoSans-Regular.ttf") format("truetype");
+	font-weight: 400;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "notoSans";
+	src: url("../fonts/notoSans/NotoSans-Medium.woff2") format("woff2"),
+		url("../fonts/notoSans/NotoSans-Medium.woff") format("woff"),
+		url("../fonts/notoSans/NotoSans-Medium.ttf") format("truetype");
+	font-weight: 600;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "notoSans";
+	src: url("../fonts/notoSans/NotoSans-Bold.woff2") format("woff2"),
+		url("../fonts/notoSans/NotoSans-Bold.woff") format("woff"),
+		url("../fonts/notoSans/NotoSans-Bold.ttf") format("truetype");
+	font-weight: 800;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "notoSans";
+	src: url("../fonts/notoSans/NotoSans-Black.woff2") format("woff2"),
+		url("../fonts/notoSans/NotoSans-Black.woff") format("woff"),
+		url("../fonts/notoSans/NotoSans-Black.ttf") format("truetype");
+	font-weight: 900;
+}

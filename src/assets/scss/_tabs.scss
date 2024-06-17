@@ -1,0 +1,59 @@
+.iSleep {
+
+	.nav-tabs {
+		background-color: $slate-50;
+		border-color: $slate-200;
+		flex-wrap: nowrap;
+		z-index: 1;
+
+		& >.nav-item {
+			text-align: center;
+			padding-right: 1rem;
+
+			&:last-child {
+				padding-right: 0;
+			}
+
+			& >.nav-link {
+				border: none;
+				color: $slate-500;
+				position: relative;
+				padding: .85rem 0 !important;
+				font-size: 14px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				line-height: 120%;
+				transition: all 0.3s cubic-bezier(0.0, 0.0, 0.2, 1);
+
+				&.active,
+				&:hover {
+					font-size: 14px;
+					color: $slate-950;
+					background-color: transparent;
+
+					&::after {
+						transform: scale(1);
+					}
+				}
+
+				&::after {
+					content: "";
+					background: $cyam-500;
+					height: 3px;
+					position: absolute;
+					width: 100%;
+					left: 0px;
+					bottom: 0px;
+					transition: transform 0.3s cubic-bezier(0.0, 0.0, 0.2, 1);
+					transform: scale(0);
+				}
+
+				&.disabled {
+					color: $slate-300;
+				}
+
+			}
+		}
+	}
+}

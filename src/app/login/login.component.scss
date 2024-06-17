@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+:root {
+    --color-primary: #06B6D4;
+}
+
+.login {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    background-color: #475569 !important;
+}
+
+.login::before {
+    content: "";
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    height: 100%;
+    z-index: -1;
+    background-color: #475569 !important;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.login__card {
+    width: min(350px, 100%);
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0px 10px 15px -3px rgba(71, 85, 105, 0.10), 0px 4px 6px -4px rgba(71, 85, 105, 0.10);
+}
+
+.login__header {
+    text-align: center;
+}
+
+.login__logo {
+    margin-bottom: 3rem;
+}
+
+.login__title {
+    font-size: 1.25rem;
+    color: #020617;
+    font-weight: 700;
+    line-height: 100%;
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    color: #64748B;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    display: block;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #020617;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control:focus {
+    outline: 0;
+    border-color: var(--color-primary);
+}
+
+.login__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    padding: .575rem 0.75rem;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: #24A8BF;
+    width: 100%;
+    border: 1px solid #24A8BF;
+    border-radius: 2rem;
+}
+
+.login__button:hover {
+    background-color: #15AFC9;
+}
+
+.login__button:active {
+    background-color: #24A8BF;
+}
+
+.login__muted {
+    color: #64748B;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}

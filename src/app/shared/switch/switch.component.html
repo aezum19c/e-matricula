@@ -1,0 +1,12 @@
+<div class="form-check form-switch">
+	<input 
+		class="form-check-input" 
+		type="checkbox" 
+		role="switch" 
+		[id]=" 'estado' + index " 
+		(change)="cambioEstado()"
+		[checked]="estado">
+	<label class="form-check-label" [for]=" 'estado' + index "> 
+		<small [ngClass]="{ 'text-slate-900' : estado }">{{ estado ? 'Activo' : 'Inactivo' }}</small>
+	</label>
+</div>

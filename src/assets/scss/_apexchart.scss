@@ -1,0 +1,52 @@
+.iSleep {
+
+	& .apexcharts-toolbar {
+		display: none;
+	}
+
+	& .apexcharts-tooltip {
+		color: white;
+		background-color: $slate-800;
+		border-radius: $rounded;
+		box-shadow: $box-shadow-lg;
+
+		&.apexcharts-theme-apexcharts-tooltip {
+			border-radius: $border-radius-lg;
+		}
+
+		& .apexcharts-tooltip-series-group {
+			padding: 0 .65rem;
+			background-color: transparent !important;
+
+			&.apexcharts-active {
+				& .apexcharts-tooltip-marker {
+					display: block !important;
+				}
+			}
+		}
+
+	}
+
+	#chartLine .apexcharts-legend-series {
+		margin: 0.25rem 0.75rem !important;
+	}
+
+	.apexcharts-xaxistooltip.apexcharts-xaxistooltip-bottom {
+		border: 1px solid $slate-800 !important;
+		box-shadow: $box-shadow-lg;
+		background-color: white;
+		border-radius: 4px;
+		font-weight: 700;
+		&::before, &::after {
+			display: none;
+		}
+	}
+
+	.chart-heart {
+		.apexcharts-text.apexcharts-xaxis-label:first-child,
+		.apexcharts-text.apexcharts-xaxis-label:last-child {
+			font-weight: 700;
+		}
+	}
+	
+}

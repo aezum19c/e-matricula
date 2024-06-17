@@ -1,0 +1,37 @@
+<div class="modal-header border-0">
+	<h4 class="modal-title">Importar {{ typeDataimport }} por CSV</h4>
+</div>
+<div class="modal-body">
+	<div class="data-import">
+		<button type="button" class="btn btn-sm btn-outline-secondary">
+			<span class="feather icon-upload me-1"></span>
+			<span class="btn-name text-nowrap">Seleccionar archivo</span>
+		</button>
+		<span class="label-small text-mute text-nowrap mt-2">
+			Tamaño máximo 10MB</span>
+	</div>
+</div>
+<div class="modal-footer d-flex align-items-center justify-content-between">
+	<button 
+		type="button" 
+		class="btn btn-link text-decoration-none px-0">
+		<span class="feather icon-download me-1"></span>
+		Descargar plantilla ejemplo
+	</button>
+	<div class="d-flex align-items-center">
+		<button 
+			type="button" 
+			class="btn btn-outline-secondary me-1" 
+			(click)="activeModal.close('Close click')">
+			<span class="feather icon-x me-1"></span>
+			Cancelar
+		</button>
+		<button 
+			type="button" 
+			class="btn btn-primary" 
+			(click)="activeModal.close('Close click')">
+			<span class="feather icon-check me-1"></span>
+			Confirmar
+		</button>
+	</div>
+</div>

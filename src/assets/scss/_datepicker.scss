@@ -1,0 +1,47 @@
+.iSleep {
+
+	[ngbDatepickerDayView] {
+		border-radius: 50%;
+		color: $slate-950;
+	}
+
+	.calendar {
+
+		max-width: 100%;
+
+		.ngb-dp-months {
+			overflow-x: auto;
+			scroll-snap-type: x proximity;
+			.ngb-dp-month {
+				scroll-snap-align: center;
+			}
+		}
+
+		.ngb-dp-weekday {
+			color: $slate-500;
+		}
+
+		.ngb-custom,
+		.ngb-custom-calendar {
+			text-align: center;
+			padding: 0;
+			display: inline-flex;
+			height: 2rem;
+			width: 2rem;
+			border-radius: 50%;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.ngb-custom.range,
+		.ngb-custom:hover,
+		.ngb-custom.selected {
+			color: white;
+			background-color: $cyam-500 !important;
+		}
+
+		.ngb-custom.selected-day {
+			background-color: $slate-200;
+		}
+	}
+}

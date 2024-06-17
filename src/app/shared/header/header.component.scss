@@ -1,0 +1,56 @@
+@import "variables";
+
+.header {
+	height: $header-size;
+	background: linear-gradient(90deg, $slate-600 0%, $slate-700 50%, $slate-600 100%);
+	padding: .75rem 1rem;
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1001;
+
+	&-item {
+		flex-basis: 0;
+		flex-grow: 1;
+	}
+
+	&-avatar {
+		width: 30px;
+		min-width: 30px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $cyam-500;
+		border-radius: $rounded;
+		cursor: pointer;
+	}
+
+	.dropdown-menu {
+		right: 0;
+	}
+
+}
+
+.btn.btn-icon {
+	background-color: transparent;
+}
+.btn.btn-icon:hover,
+.btn.btn-icon:focus,
+.btn.btn-icon:active {
+	background-color: $slate-700;
+}
+
+.btn-profile {
+	color: white;
+	border: transparent;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: white;
+		background-color: $slate-700;
+	}
+}

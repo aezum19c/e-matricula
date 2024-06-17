@@ -1,0 +1,11 @@
+@import "variables";
+
+.data-import {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 1rem;
+	border: 1px dashed $slate-200;
+	border-radius: .5rem;
+}

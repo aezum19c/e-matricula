@@ -1,0 +1,59 @@
+.iSleep {
+
+	.card {
+		background-color: white;
+		border-radius: 8px;
+		box-shadow: 0px 1px 2px -1px rgba(71, 85, 105, 0.10), 0px 1px 3px 0px rgba(71, 85, 105, 0.10);
+		border: 1px solid $slate-200;
+
+		&-sindata {
+			border-color: $slate-200;
+			background-color: $slate-50;
+		}
+
+		&-bajo {
+			border-color: $success;
+			background-color: #A7F3D0;
+		}
+
+		&-moderado {
+			border-color: $warning;
+			background-color: #FDE68A;
+		}
+
+		&-alto {
+			border-color: $danger;
+			background-color: #FECDD3;
+		}
+
+		&-critico {
+			border-color: $purple-500;
+			background-color: #E9D5FF;
+		}
+
+		&.overflow-y {
+			overflow-y: hidden;
+		}
+	}
+	.card.card-busqueda {
+		background-color: $slate-100;
+	}
+
+	.card-hide {
+		display: none;
+		animation: card-animation ease .15s;
+	}
+
+	@keyframes card-animation {
+		from {
+			opacity: 1;
+			display: block;
+		}
+
+		to {
+			opacity: 0;
+			display: none;
+		}
+	}
+	
+}

@@ -1,0 +1,36 @@
+<div 
+	class="modal fade fade-in-modal" 
+	[ngClass]="{ 'show' : animateModal() }"
+	tabindex="-1" 
+	aria-labelledby="modal"
+	aria-modal="true" 
+	role="dialog" 
+	style="display: block;">
+	<div class="modal-dialog modal-sm" [ngClass]="{ 'slider-in-modal' : animateModal() }">
+		<div class="modal-content text-center">
+			<div class="modal-body py-4">
+				<span class="modal-icon feather icon-{{ modal.icon }}"></span>
+				<h4 class="text-center lh-sm mb-0">{{ modal.title }}</h4>
+			</div>
+			<div class="modal-footer">
+				<div class="w-100 d-flex m-0 gx-3">
+					<button 
+						type="button" 
+						class="btn btn-outline-secondary w-100 me-1" 
+						(click)="removerAnimacion( false, $event )">
+						<span class="feather icon-x me-1"></span>
+					Cancelar
+					</button>
+					<button 
+						type="button" 
+						class="btn btn-primary w-100 ms-1" 
+						(click)="removerAnimacion( true, $event )">
+						<span class="feather icon-check me-1"></span>
+						Confirmar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-backdrop fade" [ngClass]="{ 'show' : animateModal() }"></div>

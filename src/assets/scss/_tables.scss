@@ -1,0 +1,59 @@
+.iSleep {
+
+	.table-pagination-item {
+		flex-basis: 0;
+		flex-grow: 1;
+	}
+
+	.table-empty {
+		width: 100%;
+		max-width: 400px;
+		margin: 0 auto;
+	}
+	
+  .table {
+    thead {
+      th {
+				height: 40px;
+				vertical-align: middle;
+				font-size: 0.7rem;
+				font-weight: 400;
+        color: $slate-500;
+        text-transform: uppercase;
+        background-color: $slate-50;
+      }
+    }
+		tbody {
+			td,
+			th {
+				height: 45px;
+			}
+			tr {
+				color: $slate-950;
+				text-transform: uppercase;
+				vertical-align: middle;
+				&:hover {
+					background-color: $slate-100;
+				}
+			}
+			/* @media ( min-width: 768px ) {
+				tr {
+					.table-btn-action .btn {
+						opacity: 0;
+						visibility: hidden;
+						pointer-events: none;
+						transition: opacity ease .3s;
+					}
+					&:hover {
+						.table-btn-action .btn {
+							opacity: 1;
+							visibility: visible;
+							pointer-events: all;
+						}
+					}
+				}
+			} */
+		}
+  }
+	
+}

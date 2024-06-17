@@ -1,0 +1,108 @@
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: $slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: $slate-300;
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: $slate-300;
+}
+
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	letter-spacing: calc(0.6px - 0.05em);
+}
+
+body {
+
+	&.iSleep {
+		font-family: "notoSans", sans-serif, Arial;
+		font-weight: 400;
+		color: $text-primary;
+		background-color: $slate-50;
+		overflow: hidden;
+		margin-top: $header-size;
+
+		.tooltip.tooltip-custom {
+			left: -1rem !important;
+		}
+
+		@media (max-width: 992px) {
+			.tooltip {
+				display: none !important;
+			}
+		}
+
+		.main {
+			width: 100%;
+			padding: 1rem;
+			overflow-y: auto;
+			overflow-x: hidden;
+			height: calc(100% - $header-size);
+
+			&-content {
+				width: 100%;
+				margin: 0 auto;
+				max-width: 1000px;
+				padding-bottom: 1.5rem;
+			}
+		}
+
+		label {
+			color: $slate-600;
+			line-height: 100%;
+		}
+
+		hr {
+			border-color: $slate-200;
+		}
+
+		p {
+			line-height: 135%;
+		}
+
+		.text-wrap-balance {
+			text-wrap: balance;
+		}
+
+		.pointer-none {
+			pointer-events: none;
+		}
+
+		.text-initital {
+			text-transform: initial !important;
+		}
+
+		.form-switch,
+		.form-switch .form-check-input,
+		.form-switch .form-check-label {
+			cursor: pointer;
+			display: inline-block;
+		}
+
+		.cursor-pointer {
+			cursor: pointer;
+		}
+
+		.wizard .tab-pane {
+			height: 100%;
+		}
+
+		.turnoColor {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 12px;
+			height: 12px;
+			border-radius: 100%;
+		}
+
+	}
+
+}

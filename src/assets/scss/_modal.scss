@@ -1,0 +1,16 @@
+.iSleep {
+	.modal {
+		&-footer {
+			border: none;
+		}
+		&-content {
+			border: none;
+			box-shadow: $box-shadow-lg;
+			border-radius: $border-radius-lg;
+		}
+		&-backdrop.show {
+			opacity: .6;
+			background-color: $slate-800;
+		}
+	}
+}

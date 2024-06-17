@@ -1,0 +1,44 @@
+@import "variables";
+
+.loading {
+	text-align: center;
+	padding: 2rem 1rem;
+
+	&-fade {
+		opacity: 1;
+		animation: loadingFade ease 1.25s infinite;
+	}
+
+}
+
+@keyframes loadingFade {
+
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+
+}
+
+/* @keyframes loadingFade {
+
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+
+} */

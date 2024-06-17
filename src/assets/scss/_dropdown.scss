@@ -1,0 +1,24 @@
+.iSleep {
+	.dropdown-menu {
+		box-shadow: $box-shadow-lg;
+		border-color: transparent;
+		border-radius: 8px;
+		.dropdown-item {
+			display: flex;
+			align-items: center;	
+			padding-top: .45rem;
+			padding-bottom: .45rem;
+			&:hover {
+				background-color: $slate-100;
+			}
+			&:focus,
+			&:active {
+				color: $cyam-600;
+				background-color: $cyam-200;
+				.feather {
+					color: $cyam-600 !important;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+<div class="sidebar" id="sidebar" [ngClass]="{ 'show' : sidebarClosed() }">
+    <div class="sidebar-company pt-3">
+        <img src="assets/images/logo.png" alt="logo isleep" width="140px">
+        <!--<button 
+			placement="end"
+			ngbTooltip="Subir logotipo"
+			container="body"
+			triggers="hover"
+			[disableTooltip]="!sidebarClosed()"
+			type="button" 
+			class="btn btn-sm btn-outline-secondary justify-content-start">
+			<span class="feather icon-upload me-1"></span>
+			<span class="btn-name text-nowrap">Subir logotipo</span>
+		</button>
+		<span class="sidebar-company-text label-small text-mute text-nowrap mt-2">Tamaño máximo 2MB</span>-->
+    </div>
+    <div class="sidebar-menu">
+        <div class="sidebar-menu-item" *ngFor="let menu of listMenu()">
+            <h6 class="sidebar-menu-title fw-bold label-regular text-uppercase text-mute">{{menu.name}}</h6>
+            <ul class="nav flex-column">
+                <li class="nav-item" [ngClass]="{ 'mb-0' : item.items }" *ngFor="let item of menu.items">
+                    <a placement="end" ngbTooltip="{{ item.name }}" container="body" triggers="hover" tooltipClass="tooltip-custom" [disableTooltip]="!sidebarClosed()" class="nav-link d-flex label-large" routerLinkActive="active" (click)="openCompany( item )" [ngClass]="{ 'mb-1' : item.items }"
+                        [routerLink]="[ item.url ]">
+                        <span class="feather icon-{{ item.icon }}"></span>
+                        <span class="item">{{ item.name }}</span>
+                    </a>
+                    <button *ngIf="item.items" type="button" container="body" class="btn btn-icon btn-open-menu" placement="end" ngbTooltip=" {{ !companyClosed() ? 'Cerrar' : 'Abrir' }} " triggers="hover" (click)="toggleCompany()">
+						<span class="feather icon-chevron-{{ !companyClosed() ? 'up' : 'down' }}"></span>
+					</button>
+                    <div *ngIf="item.items" [ngbCollapse]="companyClosed()">
+                        <ul class="nav nav-empresa flex-column">
+                            <li class="nav-item" *ngFor="let itemEmpresa of item.items">
+                                <a class="nav-link d-flex label-large" placement="end" ngbTooltip="{{ itemEmpresa.name }}" container="body" triggers="hover" tooltipClass="tooltip-custom" [disableTooltip]="!sidebarClosed()" routerLinkActive="active" [routerLink]="[itemEmpresa.url]">
+                                    <span class="nav-empresa-icon"></span>
+                                    <span class="item ms-2">{{ itemEmpresa.name }}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="sidebar-fade" (click)="toogleSidebar()"></div>

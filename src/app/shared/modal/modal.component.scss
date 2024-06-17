@@ -1,0 +1,43 @@
+@import "variables";
+
+.fade-in-modal {
+	animation: fadeInModal ease .3s;
+}
+
+@keyframes fadeInModal {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.slider-in-modal {
+	animation: slideInModal ease .4s;
+}
+
+@keyframes slideInModal {
+	0% {
+		transform: translateY(-25%);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+h4 {
+	text-wrap: balance;
+}
+
+.modal-icon {
+	padding: 1rem;
+	font-size: 2rem;
+	background-color: $slate-200;
+	border-radius: 100%;
+	color: $slate-500;
+	display: inline-block;
+	margin-bottom: 1.25rem;
+}

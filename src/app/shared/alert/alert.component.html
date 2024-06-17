@@ -1,0 +1,17 @@
+<div class="toast-container position-fixed top-0 end-0 p-3 slade-in-modal" *ngIf="alertService.alert.message">
+	<div class="toast {{ alertService.alert.type }} fade show align-items-center border-0" role="alert"
+		aria-live="assertive" aria-atomic="true">
+		<div class="toast-body d-flex align-items-start">
+			<span class="feather icon icon-md me-2"></span>
+			<span class="lh-sm">
+				{{ alertService.alert.message }}
+			</span>
+			<button 
+				(click)="alertService.delete()" 
+				type="button" 
+				class="btn btn-sm btn-icon ms-auto">
+				<span class="feather icon-x text-secondary"></span>
+			</button>
+		</div>
+	</div>
+</div>

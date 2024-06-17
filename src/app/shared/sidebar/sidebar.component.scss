@@ -1,0 +1,234 @@
+@import "variables";
+.sidebar,
+.sidebar-nav {
+    top: 0;
+    position: fixed;
+    transform: translateX(-110%);
+    height: 100vh;
+    width: 280px;
+    z-index: 5;
+    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 1px solid $slate-200;
+    transition: all $animation .3s;
+    background-color: $slate-50;
+    box-shadow: $box-shadow-xl;
+    &-company {
+        height: 100px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        transition: all ease .3s;
+        transform-origin: center left;
+        &-text {
+            display: block;
+            transition: all ease .3s;
+        }
+        .btn {
+            width: 110px;
+            transition: width ease .3s;
+            .btn-name {
+                opacity: 1;
+                transition: opacity ease .3s;
+            }
+        }
+    }
+    &-menu {
+        &-item {
+            margin-bottom: 1.5rem;
+            border-top: 1px solid $slate-50;
+            transition: color ease .3s;
+            &:last-child {
+                margin-bottom: .5rem;
+            }
+            .sidebar-menu-title {
+                opacity: 1;
+                transition: opacity ease .15s;
+            }
+            .nav-empresa {
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 2px;
+                    height: 100%;
+                    background: #64758b;
+                    top: 0;
+                    left: 24px;
+                }
+                &-icon {
+                    width: 8px;
+                    min-width: 8px;
+                    height: 8px;
+                    border: 2px solid $slate-500;
+                    background-color: $slate-50;
+                    border-radius: 8px;
+                    margin: 0.3rem;
+                    display: inline-block;
+                    z-index: 2;
+                }
+                .nav-item .nav-link {
+                    position: relative;
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 24px;
+                        top: 0;
+                        width: 2px;
+                        height: 100%;
+                        background: transparent;
+                        z-index: 1;
+                    }
+                    &.active {
+                        &::after {
+                            background: $cyam-500;
+                        }
+                        .nav-empresa-icon {
+                            border-color: $cyam-500;
+                        }
+                    }
+                }
+            }
+            .nav-item {
+                margin-bottom: .25rem;
+                position: relative;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                .nav-link {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    border-radius: $rounded;
+                    color: $slate-950;
+                    padding-top: .75rem;
+                    padding-bottom: .75rem;
+                    background-color: $slate-50;
+                    transition: all ease .3s;
+                    .feather {
+                        font-weight: 600;
+                        color: $slate-500;
+                        font-size: 1.125rem;
+                        margin-right: 0.5rem;
+                    }
+                    &:hover {
+                        background-color: $slate-200;
+                    }
+                    &.active {
+                        color: $cyam-600;
+                        font-weight: 800;
+                        background-color: $cyam-100;
+                        position: relative;
+                        .feather {
+                            color: $cyam-600;
+                        }
+                    }
+                    &.disabled {
+                        color: $slate-300;
+                        .feather {
+                            color: $slate-300;
+                        }
+                    }
+                    .item {
+                        opacity: 1;
+                        transition: opacity ease .15s;
+                    }
+                }
+            }
+        }
+    }
+    &.show {
+        transform: translateX(0);
+        ~.sidebar-fade {
+            opacity: .6;
+            visibility: visible;
+        }
+    }
+    @media (min-width: 992px) {
+        top: $header-size;
+        position: sticky;
+        position: -webkit-sticky;
+        box-shadow: none;
+        transform: translateX(0);
+        height: calc(100vh - $header-size);
+        width: 240px;
+        &.show {
+            width: 80px;
+            .company-items {
+                &.show {
+                    height: 120px;
+                }
+            }
+            .sidebar-company {
+                height: 47px;
+                margin-bottom: 1rem;
+                &-text {
+                    display: none;
+                }
+                .btn {
+                    width: 30px;
+                    .btn-name {
+                        opacity: 0;
+                    }
+                }
+            }
+            .sidebar-menu {
+                .sidebar-menu-item {
+                    border-top: 1px solid $slate-200;
+                    margin-bottom: 1rem;
+                    .sidebar-menu-title {
+                        opacity: 0;
+                        margin: 0;
+                    }
+                    .nav-item {
+                        .nav-link {
+                            width: 65px;
+                            padding: 0.55rem 0.85rem;
+                            border-top-right-radius: 0;
+                            border-bottom-right-radius: 0;
+                            .item {
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            .btn-open-menu {
+                display: none;
+            }
+            ~.sidebar-fade {
+                opacity: 0;
+                visibility: hidden;
+            }
+            .nav-empresa {
+                &::after,
+                .nav-item .nav-link::after {
+                    left: 21px;
+                }
+            }
+        }
+    }
+    .btn-open-menu {
+        position: absolute;
+        top: 5px;
+        right: 2px;
+        z-index: 1;
+    }
+}
+
+.sidebar-fade {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    background-color: $slate-800;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity ease .3s;
+    z-index: 4;
+}

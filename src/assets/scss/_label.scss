@@ -1,0 +1,55 @@
+.iSleep {
+	.label {
+		padding: 0.05rem 0.15rem;
+		background-color: #ccc;
+		border-radius: 60px;
+		display: inline-flex;
+		align-items: center;
+		text-transform: capitalize;
+		border: 1px solid transparent;
+		font-size: 0.75rem;
+		cursor: pointer;
+		white-space: nowrap;
+		& svg {
+			transform: scale(0.8);
+		}
+
+		&.label-sindata {
+			color: $slate-500;
+			border-color: $slate-200;
+			background-color: $slate-50;
+			& svg {
+				color: $slate-300;
+			}
+		}
+		&.label-bajo {
+			border-color: $success;
+			background-color: #A7F3D0;
+			& svg {
+				color: $success;
+			}
+		}
+		&.label-moderado {
+			border-color: $warning;
+			background-color: #FDE68A;
+			& svg {
+				color: $warning;
+			}
+		}
+		&.label-alto {
+			border-color: $danger;
+			background-color: #FECDD3;
+			& svg {
+				color: $danger;
+			}
+		}
+		&.label-critico {
+			border-color: $purple-500;
+			background-color: #E9D5FF;
+			& svg {
+				color: $purple-500;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,61 @@
+.iSleep {
+	.text {
+		&-slate-900 {
+			color: $slate-950 !important;
+		}
+
+		&-slate-500 {
+			color: $slate-500;
+		}
+
+		&-mute {
+			color: $slate-400;
+		}
+	}
+	.bgd {
+		&-primary {
+			background-color: $cyam-500;
+		}
+
+		&-secondary {
+			background-color: $slate-200 !important;
+		}
+
+		&-mute {
+			background-color: $slate-50 !important;
+		}
+	}
+	.text-critico {
+		color: $purple-500 !important;
+	}
+	.bg-critico {
+		background-color: $purple-500 !important;
+	}
+	.text-actividad {
+		color: #3B82F6 !important;
+	}
+	.bg-actividad {
+		background-color: #3B82F6 !important;
+	}
+	.text-dia {
+		color: #FDE047 !important;
+	}
+	.bg-dia {
+		background-color: #FDE047 !important;
+	}
+	.text-noche {
+		color: #1E3A8A !important;
+	}
+	.bg-noche {
+		background-color: #1E3A8A !important;
+	}
+	.text-nousaron {
+		color: #CBD5E1 !important;
+	}
+	.text-interrupciones {
+		color: #BE123C !important;
+	}
+	.bg-interrupciones {
+		background-color: #BE123C !important;
+	}
+}

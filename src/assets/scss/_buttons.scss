@@ -1,0 +1,92 @@
+.iSleep {
+	.btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: $rounded;
+		text-wrap: nowrap;
+		height: $isleep-btn-regular;
+
+		.feather {
+			font-size: 0.875rem;
+		}
+
+		&.btn-sm {
+			height: $isleep-btn-small;
+		}
+
+		&.btn-lg {
+			height: $isleep-btn-large;
+
+			.feather {
+				font-size: 1.125rem;
+			}
+		}
+
+		&.btn-primary {
+			color: white !important;
+			font-weight: 600;
+		}
+
+		&.btn-outline-secondary {
+			color: $slate-500;
+			border-color: $slate-200;
+			background-color: white;
+
+			&:hover,
+			&.active {
+				color: $slate-500;
+				border-color: $slate-500;
+				background-color: $slate-100;
+				border-color: $slate-200;
+			}
+		}
+
+		&.btn-icon {
+			color: $slate-600;
+			width: $isleep-btn-regular;
+			min-width: $isleep-btn-regular;
+			max-width: $isleep-btn-regular;
+			height: $isleep-btn-regular;
+			background-color: white;
+			justify-content: center;
+			position: relative;
+
+			&.btn-sm {
+				width: $isleep-btn-small;
+				min-width: $isleep-btn-small;
+				max-width: $isleep-btn-small;
+				height: $isleep-btn-small;
+			}
+
+			&:focus,
+			&:hover,
+			&:active {
+				color: $slate-500;
+				border-color: transparent;
+				background-color: $slate-100;
+
+				&::before {
+					transform: scale(1);
+				}
+
+				&.btn-lg {
+					.feather {
+						font-size: 1.125rem;
+					}
+				}
+
+			}
+
+			&.disabled,
+			&:disabled {
+				color: $slate-400;
+				border-color: transparent !important;
+			}
+		}
+	}
+
+	.btn-group {
+		z-index: 0;
+	}
+}

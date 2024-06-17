@@ -1,0 +1,10 @@
+export enum TypeDatasearch {
+  ESTADISTICAS,
+  MONITOREO,
+  CONFIGURACION,
+	REPORTES,
+	SEDE,
+	OFICINA,
+	GRUPO,
+	PROGRAMACION
+}

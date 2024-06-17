@@ -1,0 +1,172 @@
+<div class="card card-busqueda p-3 shadow-none my-3">
+	<div class="d-flex align-items-center">
+		<h6 class="m-0 text-uppercase text-secondary">Criterios de búsqueda</h6>
+		<button 
+			placement="start"
+			ngbTooltip=" {{ !isCollapsed ? 'Cerrar' : 'Abrir' }} "
+			triggers="hover"
+			type="button" 
+			(click)="isCollapsed = !isCollapsed"
+			class="btn btn-sm btn-icon ms-auto bg-transparent">
+			<span class="feather icon-chevron-{{ isCollapsed ? 'down' : 'up' }} text-secondary"></span>
+		</button>
+	</div>
+	<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+		<form>
+			<div class="row gx-3">
+				<div class="col-sm-4 mt-3">
+					<label for="empresa" class="form-label">Empresa</label>
+					<ng-select 
+						class="text-uppercase w-100"
+						[items]="listadoEmpresas()" 
+						bindLabel="name"
+						bindValue="id" 
+						name="empresa"
+						[clearable]="false"
+						[(ngModel)]="empresaSelect">
+					</ng-select>
+				</div>
+				<div class="col-sm-4 mt-3" 
+					*ngIf="
+						typeDatasearch === typeData().ESTADISTICAS || 
+						typeDatasearch === typeData().MONITOREO ||
+						typeDatasearch === typeData().REPORTES ||
+						typeDatasearch === typeData().OFICINA ||
+						typeDatasearch === typeData().GRUPO ||  
+						typeDatasearch === typeData().PROGRAMACION"
+						>
+					<label for="sede" class="form-label">Sede</label>
+					<ng-select 
+						class="text-uppercase w-100"
+						[items]="listadoEmpresas()" 
+						bindLabel="name"
+						bindValue="id" 
+						name="sede"
+						[clearable]="false"
+						[(ngModel)]="empresaSelect">
+					</ng-select>
+				</div>
+				<div class="col-sm-4 mt-3" 
+					*ngIf="
+						typeDatasearch === typeData().ESTADISTICAS ||
+						typeDatasearch === typeData().MONITOREO ||
+						typeDatasearch === typeData().GRUPO ||
+						typeDatasearch === typeData().PROGRAMACION" 
+						>
+					<label for="oficina" class="form-label">Oficina</label>
+					<ng-select 
+						class="text-uppercase w-100"
+						[items]="listadoEmpresas()" 
+						bindLabel="name"
+						bindValue="id" 
+						name="oficina"
+						[clearable]="false"
+						[(ngModel)]="empresaSelect">
+					</ng-select>
+				</div>
+				<div class="col-sm-4 mt-3" 
+					*ngIf="
+						typeDatasearch === typeData().ESTADISTICAS || 
+						typeDatasearch === typeData().MONITOREO && typeTurno() ||
+						typeDatasearch === typeData().PROGRAMACION">
+					<label for="grupo" class="form-label">Grupo</label>
+					<ng-select 
+						class="text-uppercase w-100"
+						[items]="listadoEmpresas()" 
+						bindLabel="name"
+						bindValue="id" 
+						name="grupo"
+						[clearable]="false"
+						[(ngModel)]="empresaSelect">
+					</ng-select>
+				</div>
+				<div class="col-6 col-sm-4 mt-3" *ngIf="typeDatasearch === typeData().ESTADISTICAS">
+					<label for="fechaInicio" class="form-label">Fecha inicio</label>
+					<input
+						autocomplete="off"
+						class="form-control form-control-calendar"
+						placeholder="dd-mm-yyyy"
+						name="fechaInicio"
+						[(ngModel)]="calendarInicio"
+						ngbDatepicker
+						language="es"
+						#fechaInicio="ngbDatepicker"
+						(click)="fechaInicio.toggle()"
+					/>
+				</div>
+				<div class="col-6 col-sm-4 mt-3" *ngIf="typeDatasearch === typeData().ESTADISTICAS">
+					<label for="fechaFin" class="form-label">Fecha fin</label>
+					<input
+						autocomplete="off"
+						class="form-control form-control-calendar"
+						placeholder="dd-mm-yyyy"
+						name="fechaFin"
+						[(ngModel)]="calendarFin"
+						ngbDatepicker
+						#fechaFin="ngbDatepicker"
+						(click)="fechaFin.toggle()"
+					/>
+				</div>
+				<div class="col-sm-4 mt-3" *ngIf="typeDatasearch === typeData().MONITOREO">
+					<label for="fechaFin" class="form-label">Turno</label>
+					<ng-select 
+						class="text-uppercase w-100"
+						[items]="listadoEmpresas()" 
+						bindLabel="name"
+						bindValue="id" 
+						name="oficina"
+						[clearable]="false"
+						[(ngModel)]="empresaSelect">
+					</ng-select>
+				</div>
+				<div class="col-sm-4 mt-3" *ngIf="typeDatasearch === typeData().MONITOREO">
+					<label for="fechaFin" class="form-label">Fecha monitoreo</label>
+					<div class="d-flex align-items-center">
+						<input
+							autocomplete="off"
+							class="form-control form-control-calendar"
+							placeholder="dd-mm-yyyy"
+							name="fechaFin"
+							[(ngModel)]="calendarFin"
+							ngbDatepicker
+							#fechaFin="ngbDatepicker"
+							(click)="fechaFin.toggle()"
+						/>
+						<div class="d-flex align-items-center ms-2">
+							<button 
+								placement="bottom" 
+								ngbTooltip="Día anterior"
+								triggers="hover"
+								class="btn btn-icon btn-open-menu me-2">
+								<span class="feather icon-chevron-left"></span>
+							</button>
+							<button 
+								placement="bottom" 
+								ngbTooltip="Día siguiente"
+								triggers="hover"
+								class="btn btn-icon btn-open-menu">
+								<span class="feather icon-chevron-right"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 pt-4 pb-2" 
+					[ngClass]="{ 'd-flex align-items-end justify-content-center' : !typeTurno() }"
+					*ngIf="typeDatasearch === typeData().MONITOREO">
+					<div class="form-check form-check-inline">
+						<input 
+							(change)="cambiarOpcion(true)"
+							class="form-check-input" type="radio" name="grupo" id="porGrupo" checked value="grupo">
+						<label class="form-check-label" for="porGrupo">Por grupo</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input 
+							(change)="cambiarOpcion(false)"
+							class="form-check-input" type="radio" name="grupo" id="tipoTurno" value="turno">
+						<label class="form-check-label" for="tipoTurno">Por tipo turno</label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

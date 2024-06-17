@@ -1,0 +1,134 @@
+<div class="d-flex align-items-center py-3">
+    <button type="button" placement="end" ngbTooltip="Atrás" triggers="hover" routerLink="/principal/matricula" class="btn btn-icon border me-2">
+		<span class="feather icon-arrow-left"></span>
+	</button>
+    <div class="breadcrumb">
+        <span class="breadcrumb-item breadcrumb-item-link" routerLink="/principal/matricula"> Matricula </span>
+        <span class="breadcrumb-item">{{ !nuevoRegistro() ? 'Detalles de la Matrícula' : 'Registro' }}</span>
+    </div>
+</div>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" [ngClass]=" { 'd-none' : nuevoRegistro() } " class="nav-tabs position-sticky mb-3" style="top: -1rem">
+    <li [ngbNavItem]="1">
+        <button ngbNavLink>Datos</button>
+        <ng-template ngbNavContent>
+            <div class="row">
+                <div class="col-md-9 col-lg-8 order-1 order-md-0">
+                    <div class="card p-3">
+                        <form>
+                            <h6 class="text-uppercase fw-bold mb-3 label-regular">DATOS PARA EL REGISTRO DE LA MATRICULA</h6>
+                            <div class="row gx-3">
+                                <div class="col-sm-6 mb-3">
+                                    <label for="programa" class="form-label">Programa</label>
+                                    <ng-select class="text-uppercase w-100" [items]="listadoProgramas()" bindLabel="name" bindValue="id" name="programa" (change)="elegirPrograma()" [clearable]="false" [(ngModel)]="programaSelect">
+                                    </ng-select>
+                                </div>
+                                <div class="col-sm-6 mb-3" *ngIf="programaSelect === 2">
+                                    <label for="subprograma" class="form-label">Sub Programa</label>
+                                    <ng-select class="text-uppercase w-100" [items]="listadoSubProgramas()" bindLabel="name" bindValue="id" name="subprograma" [clearable]="false" [(ngModel)]="subprogramaSelect">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="row gx-3">
+                                <div class="col-sm-6 mb-3">
+                                    <label for="nivel" class="form-label">Nivel</label>
+                                    <ng-select class="text-uppercase w-100" bindLabel="name" bindValue="id" name="nivel" (change)="elegirNivel()" [clearable]="false" [(ngModel)]="nivelSelect">
+                                        <ng-container *ngFor="let nivel of listadoNiveles()">
+                                            <ng-option *ngIf="nivel.state" [value]="nivel.id"> {{ nivel.name }}</ng-option>
+                                        </ng-container>
+                                    </ng-select>
+                                </div>
+                                <div class="col-sm-6 mb-3" *ngIf="nivelSelect === 2 || nivelSelect === 4 || nivelSelect === 10">
+                                    <label for="nivel" class="form-label">Grupo</label>
+                                    <ng-select class="text-uppercase w-100" bindLabel="name" bindValue="id" name="nivel" (change)="elegirSubNivel()" [clearable]="false" [(ngModel)]="subnivelSelect">
+                                        <ng-container *ngFor="let subnivel of listadoSubNiveles()">
+                                            <ng-option *ngIf="subnivel.state" [value]="subnivel.id"> {{ subnivel.name }}</ng-option>
+                                        </ng-container>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="row gx-3" *ngIf="programaSelect === 11111 || subprogramaSelect === 11111">
+                                <div class="col-sm-12 mb-3">
+                                    <label for="horario" class="form-label">Horario</label>
+                                    <ng-select class="ng-multi" [multiple]="true" [closeOnSelect]="false" [items]="listadoHorarios()" bindLabel="name" bindValue="name" name="horario" [clearable]="false" [(ngModel)]="listadoHorariosAsignados">
+                                        <ng-template ng-footer-tmp>
+                                            <div class="d-flex align-items-center py-1">
+                                                <button (click)="selectAll()" class="btn btn-sm btn-primary me-2">
+													<span class="feather icon-check me-1"></span>
+													Seleccionar todo
+												</button>
+                                                <button (click)="unselectAll()" class="btn btn-sm btn-outline-secondary">
+													<span class="feather icon-x me-1"></span>
+													Deseleccionar todo
+												</button>
+                                            </div>
+                                        </ng-template>
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="row gx-3" *ngIf="programaSelect === 222222 && subprogramaSelect === 22222">
+                                <div class="col-sm-12 mb-3">
+                                    <label for="horarioDefinido" class="form-label">Horario</label>
+                                    <ng-select [disabled]="true" class="ng-multi" [multiple]="true" [closeOnSelect]="false" [items]="listadoHorarios()" bindLabel="name" bindValue="name" name="horarioDefinido" [clearable]="false" [(ngModel)]="listadoHorariosDefinidos">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="row gx-3">
+                                <div class="col-sm-6 mb-3">
+                                    <label for="calendario" class="form-label">Tipo de Calendario</label>
+                                    <ng-select class="text-uppercase w-100" bindLabel="name" bindValue="id" name="calendario" [clearable]="false" [(ngModel)]="tipoCalendario" (change)="elegirTipoCalendario()">
+                                        <ng-container *ngFor="let calendario of listadoTipoCalendario()">
+                                            <ng-option [value]="calendario.id"> {{ calendario.name }}</ng-option>
+                                        </ng-container>
+                                    </ng-select>
+                                </div>
+                                <div class="col-sm-6 mt-4">
+                                    <div class="btn-group">
+                                        <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+                                            Previous
+                                        </div>
+                                        <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+                                            Today
+                                        </div>
+                                        <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+                                            Next
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="col-md-12 col-lg-12 order-1 order-md-0" style="text-align: center;">
+                            <h3>{{ viewDate | calendarDate:(view + 'ViewTitle') }}</h3>
+                        </div>
+                        <div class="col-md-12 col-lg-12 order-1 order-md-0" [ngSwitch]="tipoCalendario">
+                            <mwl-calendar-month-view *ngSwitchCase="1" [weekStartsOn]="1" [viewDate]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+                            </mwl-calendar-month-view>
+                            <mwl-calendar-week-view *ngSwitchCase="2" [weekStartsOn]="1" [dayStartHour]="7" [dayEndHour]="19" [viewDate]="viewDate" [events]="events" [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+                            </mwl-calendar-week-view>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end mt-4">
+                        <button routerLink="/principal/matricula" type="button" class="btn btn-outline-secondary me-2">
+							<span class="feather icon-x me-1"></span>
+							Cancelar
+						</button>
+                        <button (click)="abrirModal()" type="button" class="btn btn-primary">
+							<span class="feather icon-save me-1"></span>
+							Guardar
+						</button>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-4">
+                    <p class="bgd-secondary p-3 rounded">
+                        Registra la matrícula según la configuración de Programa, Sub programa y Nivel.
+                    </p>
+                </div>
+            </div>
+        </ng-template>
+    </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="py-3"></div>
+
+<app-modal *ngIf="modal().open" [modal]="modal()" [aceptarModal]="aceptarModal" [cerrarModal]="cerrarModal">
+</app-modal>

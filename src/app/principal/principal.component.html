@@ -1,0 +1,14 @@
+<app-header [showHelp]="showHelp" (toggleHelp)="toggleHelp($event)">
+</app-header>
+<div class="container-fluid vh-100 p-0 d-flex">
+    <app-sidebar></app-sidebar>
+    <main class="main" id="main">
+        <div class="main-content">
+            <app-loading *ngIf="loading()"></app-loading>
+            <router-outlet *ngIf="!loading()"></router-outlet>
+        </div>
+    </main>
+    <app-help [showHelp]="showHelp" (closeHelp)="closeHelp()">
+    </app-help>
+</div>
+<app-alert></app-alert>

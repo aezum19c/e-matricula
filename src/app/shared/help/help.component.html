@@ -1,0 +1,87 @@
+<div class="help show" [ngClass]="{ 'show' : showHelp }">
+	<ng-container *ngIf="showHelp">
+		<div class="d-flex align-items-center p-3">
+			<h4 class="mb-0 me-3 fw-bold"> Ayuda </h4>
+			<button
+				(click)="closeHelp.emit()"
+				type="button" 
+				placement="bottom" 
+				ngbTooltip="Cerrar" 
+				triggers="hover"
+				class="btn btn-icon btn-lg btn-open-menu ms-auto">
+				<span class="feather icon-x"></span>
+			</button>
+		</div>
+		<div class="help-body d-flex flex-column">
+			<div class="help-pattern">
+				<img src="assets/images/pattern.svg" alt="isotipo iSleep">
+				<div class="z-2">
+					<input 
+					class="form-control form-control-lg form-control-search text-initital rounded-pill border-0 pe-3" 
+					placement="bottom" 
+					ngbTooltip="Buscar (Enter)" 
+					triggers="hover"
+					type="search" 
+					placeholder="Buscar tema de ayuda" 
+					aria-label="Búsqueda de término">
+				</div>
+			</div>
+			<div class="p-3">
+				<div class="help-card card py-3 px-2">
+					<div class="row g-0">
+						<div class="col-3 col-sm-5 d-flex align-items-center justify-content-center">
+							<img src="assets/images/pasos.png" class="img-fluid px-3 rounded-start" alt="ilustración primeros pasos">
+						</div>
+						<div class="col-9 col-sm-7">
+							<div class="card-body">
+								<h4 class="card-title fw-bold">Configuración y primeros pasos</h4>
+								<p class="card-text text-secondary m-0">Pasos para la configuración de tu empresa, creación de turnos, operarios y programación de roster.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item py-3 list-group-item-action border-0 d-flex justify-content-between align-items-center"
+					aria-current="true">
+					<span class="feather help-icon icon-message-square text-secondary icon-md"></span>
+					<div class="ms-3">
+						<h5 class="mb-1 fw-bold text-primary">Preguntas frecuentes</h5>
+						<p class="mb-0 text-secondary">
+							Aquí hallarás respuestas claras a las preguntas más frecuentes sobre la plataforma.
+						</p>
+					</div>
+					<span class="feather icon-arrow-up-right text-secondary icon-animation icon-sm ms-3"></span>
+				</a>
+				<a href="#" class="list-group-item py-3 list-group-item-action border-0 d-flex justify-content-between align-items-center"
+					aria-current="true">
+					<span class="feather help-icon icon-book text-secondary icon-md"></span>
+					<div class="ms-3">
+						<h5 class="mb-1 fw-bold text-primary">Guías de uso</h5>
+						<p class="mb-0 text-secondary">
+							Explora nuestras guías de uso, detalladas para aprovechar al máximo la plataforma.
+						</p>
+					</div>
+					<span class="feather icon-arrow-up-right text-secondary icon-animation icon-sm ms-3"></span>
+				</a>
+				<a href="#" class="list-group-item py-3 list-group-item-action border-0 d-flex justify-content-between align-items-center"
+					aria-current="true">
+					<span class="feather help-icon icon-zap text-secondary icon-md"></span>
+					<div class="ms-3">
+						<h5 class="mb-1 fw-bold text-primary">Novedades</h5>
+						<p class="mb-0 text-secondary">
+							Te informamos sobre las mejoras y características nuevas que hacen que tu experiencia sea aún mejor.
+						</p>
+					</div>
+					<span class="feather icon-arrow-up-right text-secondary icon-animation icon-sm ms-3"></span>
+				</a>
+			</div>
+			<div class="help-footer mt-auto">
+				<h6>Contactar con helpdesk</h6>
+				<p class="text-secondary m-0">Contacta con 
+					<a target="_blank" href="https://www.zendesk.com" class="link">Zendesk</a> 
+					si no encuentras respuestas, pero explora nuestros artículos primero.</p>
+			</div>
+		</div>
+	</ng-container>
+</div>

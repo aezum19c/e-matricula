@@ -1,0 +1,95 @@
+<div class="modal-header">
+	<h4 class="modal-title fw-bold">Clasificación de riesgo</h4>
+	<button 
+		type="button" 
+		class="btn btn-icon"
+		placement="end" 
+		ngbTooltip=" Cerrar " 
+		(click)="activeModal.close('Close click')"
+		triggers="hover">
+		<span class="feather icon-x"></span>
+	</button>
+</div>
+<div class="modal-body">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th width="100px">Riesgo</th>
+				<th>Descripción</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<span class="label label-bajo">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg>
+						<span class="pe-2">Bajo</span>
+					</span>
+				</td>
+				<td class="text-lowercase">
+					Operador con calidad de sueño aceptable
+				</td>
+				<td rowspan="5">
+					<div class="px-3 text-center fw-bold">
+						Resultado del cálculo de horas efectivas de sueño menos las interrupciones y microdespertares.
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="label label-moderado">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg>
+						<span class="pe-2">Moderado</span>
+					</span>
+				</td>
+				<td class="text-lowercase">
+					Operador con calidad de sueño moderada
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="label label-alto">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg>
+						<span class="pe-2">Alto</span>
+					</span>
+				</td>
+				<td class="text-lowercase">
+					Operador con mala calidad de sueño, no adecuado para tareas de alerta y concentración.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="label label-critico">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg>
+						<span class="pe-2">Crítico</span>
+					</span>
+				</td>
+				<td class="text-lowercase">
+					Operadores con deuda de sueño importante de los últimos 3 periodos de sueño.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="label label-sindata">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg>
+						<span class="pe-2">Sin data</span>
+					</span>
+				</td>
+				<td class="text-lowercase">
+					Operador no registra información
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

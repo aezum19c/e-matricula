@@ -1,0 +1,88 @@
+@import "variables";
+
+.slade-in-modal {
+	animation: sladeAlert ease .6s;
+}
+
+@keyframes sladeAlert {
+	0% {
+		transform: translateX(110%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.toast {
+
+	position: relative;
+	overflow: hidden;
+	box-shadow: $box-shadow-lg;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 4px;
+	}
+
+	&.success {
+		background-color: $success-ligth;
+		.feather.icon {
+			color: $success;
+			&::before {
+				content: "\e92c";
+			}
+		}
+		&::before {
+			background-color: $success;
+		}
+	}
+
+	&.info {
+		background-color: $cyam-50;
+		.feather.icon {
+			color: $cyam-500;
+			&::before {
+				content: "\e988";
+			}
+		}
+		&::before {
+			background-color: $cyam-500;
+		}
+	}
+
+	&.warning {
+		background-color: $warning-ligth;
+		.feather {
+			color: $warning;
+			&::before {
+				content: "\e905";
+			}
+		}
+		&::before {
+			background-color: $warning;
+		}
+	}
+
+	&.danger {
+		background-color: $danger-ligth;
+		.feather.icon {
+			color: $danger;
+			&::before {
+				content: "\e9e0";
+			}
+		}
+		&::before {
+			background-color: $danger;
+		}
+	}
+
+	.btn-icon {
+		background-color: transparent;
+	}
+
+}

@@ -1,0 +1,47 @@
+.iSleep {
+  .icon-xs {
+    font-size: 14px !important;
+  }
+
+  .icon-sm {
+    font-size: 16px !important;
+  }
+
+  .icon-md {
+    font-size: 18px !important;
+  }
+
+  .icon-lg {
+    font-size: 20px !important;
+  }
+
+  .icon-xl {
+    font-size: 24px !important;
+  }
+	
+	.icon-point {
+		width: 10px;
+		height: 10px;
+		display: inline-block;
+		border-radius: 100%;
+		background-color: #ccc;
+	}
+
+	.battery {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		display: inline-block;
+		&-100 {
+				background-image: url('../images/lleno.svg');
+		}
+		
+		&-50 {
+			background-image: url('../images/medio.svg');
+		}
+	
+		&-0 {
+			background-image: url('../images/vacio.svg');
+		}
+	}
+}

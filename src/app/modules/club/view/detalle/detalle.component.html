@@ -1,0 +1,123 @@
+<div class="d-flex align-items-center py-3">
+    <h3 class="fw-bold m-0">Clubs</h3>
+    <button type="button" class="btn btn-primary ms-auto" routerLink="nuevo">
+		<span class="feather icon-plus me-1"></span>
+		Nuevo <span class="d-none d-sm-inline-block ms-1">Club</span>
+	</button>
+</div>
+<div class="card card-busqueda p-3 shadow-none my-3">
+    <div class="d-flex align-items-center">
+        <h6 class="m-0 text-uppercase text-secondary">Criterios de búsqueda</h6>
+        <button placement="start" ngbTooltip=" {{ !isCollapsed ? 'Cerrar' : 'Abrir' }} " triggers="hover" type="button" (click)="isCollapsed = !isCollapsed" class="btn btn-sm btn-icon ms-auto bg-transparent">
+			<span class="feather icon-chevron-{{ isCollapsed ? 'down' : 'up' }} text-secondary"></span>
+		</button>
+    </div>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <form>
+            <div class="row gx-3">
+                <div class="col-sm-4 mt-3">
+                    <label for="mes" class="form-label">Banco</label>
+                    <ng-select class="text-uppercase w-100" [items]="listadoBancos()" bindLabel="name" bindValue="id" name="mes" [clearable]="false" [(ngModel)]="bancoSelect">
+                    </ng-select>
+                </div>
+                <div class="col-sm-4 mt-3">
+                    <label for="club" class="form-label">Moneda</label>
+                    <ng-select class="text-uppercase w-100" [items]="listadoMonedas()" bindLabel="name" bindValue="id" name="club" [clearable]="false" [(ngModel)]="monedaSelect">
+                    </ng-select>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div *ngIf="collectionSize() > 0, else listadoVacio">
+    <div class="row gx-0 py-3">
+        <div class="col-md-3 d-flex align-items-center">
+            <h5 class="m-0 d-none d-md-block">Lista de Clubs
+                <span class="text-secondary label-regular text-nowrap ms-2"> ( {{ collectionSize() }} ) </span>
+            </h5>
+        </div>
+        <div class="col-md-9">
+            <div class="row gx-3">
+                <div class="col-md-6"></div>
+                <div class="col-md-6 mb-2 mb-md-0">
+                    <input class="form-control form-control-search text-initital" placement="bottom" ngbTooltip="Buscar (Enter)" triggers="hover" type="search" placeholder="Buscar " aria-label="Búsqueda de clubs">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card overflow-y">
+        <div class="table-responsive">
+            <table class="table m-0">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Banco</th>
+                        <th>Tipo Cuenta</th>
+                        <th>Tipo Moneda</th>
+                        <th>Número de cuenta</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="pointer-none" *ngIf="loading()">
+                        <td colspan="100%">
+                            <app-loading></app-loading>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let club of listadoClub; let i = index">
+                        <td>{{ club.codigo }}</td>
+                        <td>{{ club.nombre }}</td>
+                        <td>{{ club.banco }}</td>
+                        <td>{{ club.tipoCuenta }}</td>
+                        <td>{{ club.monedaCuenta }}</td>
+                        <td>{{ club.numeroCuenta }}</td>
+                        <td>
+                            <app-switch [index]="i" (abrirModal)="abrirModal()" [estado]="club.estado">
+                            </app-switch>
+                        </td>
+                        <td class="table-btn-action">
+                            <div class="d-flex align-items-center">
+                                <button routerLink="nuevo" type="button" placement="start" ngbTooltip="Ver" triggers="hover" class="btn btn-sm btn-icon border ms-auto me-1">
+									<span class="feather icon-eye"></span>
+								</button>
+                                <button routerLink="nuevo" type="button" placement="start" ngbTooltip="Editar" triggers="hover" class="btn btn-sm btn-icon border">
+									<span class="feather icon-edit-2"></span>
+								</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-pagination d-flex justify-content-between align-items-center p-2">
+            <div class="table-pagination-item d-flex align-items-center">
+                <label class="text-secondary me-2">Filas:</label>
+                <ng-select [items]="listadoPageSize()" bindLabel="name" bindValue="id" [clearable]="false" [searchable]="false" dropdownPosition="top" (change)="actualizarClub()" [(ngModel)]="pageSize">
+                </ng-select>
+            </div>
+            <small class="text-secondary d-none d-md-block">Mostrando 1 al 2 de {{ collectionSize() }} registros</small>
+            <ngb-pagination class="table-pagination-item d-flex justify-content-end" [maxSize]="3" [collectionSize]="collectionSize()" [(page)]="page" size="sm" [rotate]="true" [pageSize]="pageSize" (pageChange)="actualizarClub()">
+            </ngb-pagination>
+        </div>
+    </div>
+</div>
+<ng-template #listadoVacio>
+    <div class="table-empty text-center py-5">
+        <figure>
+            <img src="assets/images/empresa.png" alt="ilustración sede" width="100px">
+        </figure>
+        <h3 class="fw-bold">Registrar una matrícula</h3>
+        <p class="text-secondary text-wrap-balance m-0">
+            El registro de matrícula se realiza en función al club, programa, sub programa y nivel, según corresponda
+        </p>
+        <button type="button" class="btn btn-primary mx-auto mt-4" routerLink="nuevo">
+			<span class="feather icon-plus me-1"></span>
+			Nuevo Grupo
+		</button>
+    </div>
+</ng-template>
+
+<app-modal *ngIf="modal().open" [modal]="modal()" [aceptarModal]="aceptarModal" [cerrarModal]="cerrarModal">
+</app-modal>
